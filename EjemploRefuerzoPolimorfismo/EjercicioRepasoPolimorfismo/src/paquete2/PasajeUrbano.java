@@ -15,15 +15,10 @@ public abstract class PasajeUrbano{
     protected double valorFijo;
     protected Persona usuario;
     
-    public PasajeUrbano(double pasajeFijo){
+    public PasajeUrbano(double pasajeFijo,Persona us){
         valorFijo = pasajeFijo;
+        usuario = us;
     }
-    
-    public void establecerPersona(Persona u, double fijo){
-        usuario = u;
-        valorFijo = fijo;
-    }
-    
        
     public void establecerPersona(Persona p){
         usuario = p;
@@ -47,14 +42,16 @@ public abstract class PasajeUrbano{
         return valorPasaje;
     }
     
-    
+   
     @Override
     public String toString(){
         return String.format("Pasajero: %s\n"
+                    + "Apellido: %s\n"
                     + "Cédula: %s\n"
                     + "Valor Pasaje: %.2f\n"
                     + "---------------------\n",
                     obtenerPersona().obtenerNombre(),
+                    obtenerPersona().obtenerApellido(),
                     obtenerPersona().obtenerCedula(),
                     obtenerValorPasaje());
     }

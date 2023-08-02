@@ -15,6 +15,7 @@ public class Ejecutor2 {
         ArrayList<PasajeUrbano> pasajes = new ArrayList<>();
         String[] nombres = {"Austin", "Monique", "Glen", "Richard", "Patrick"};
         String[] apellidos = {"Martinez", "Lyons", "Kim", "Tate", "Lee"};
+        String[] cedulas = {"1105708745","1105707634","1105706523","1105705312","1105704201"};
         int[] edad = {9, 70, 35, 23, 10};
         double pasajeFijo = 0.4;
         
@@ -36,8 +37,49 @@ public class Ejecutor2 {
         tercera edad: mayor o igual a 65
         
         */
-        // inicio de solución
+        // inicio de solución        
         
+        for(int i =0; i < edad.length; i++){
+            
+            Persona p = new Persona(nombres[i],apellidos[i],cedulas[i],edad[i]);
+        
+            if(edad[i] >= 0 && edad[i] <= 18){
+                
+                PasajeMenorEdad pme = new PasajeMenorEdad(pasajeFijo,p); 
+                pasajes.add(pme);
+                
+            }else{
+                
+                if(edad[i] > 18 && edad[i] <= 25){
+            
+                    PasajeUniversitario pu = new PasajeUniversitario(pasajeFijo,p);
+                    pasajes.add(pu);
+                    
+                }else{
+                    
+                    
+                    if(edad[i] > 25 && edad[i] < 65){
+                        
+                        PasajeNormal pn = new PasajeNormal(pasajeFijo,p);
+                        pasajes.add(pn);
+            
+                        }else{
+                        
+                        
+                        if(edad[i] >= 65 ){
+                            
+                            PasajeTerceraEdad pte = new PasajeTerceraEdad(pasajeFijo, p);
+                            pasajes.add(pte);
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
         
         // fin  de solución
         
